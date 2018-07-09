@@ -4,6 +4,7 @@ I comment too
 
 import ssl
 import socket
+import localSystemVariables
 
 def createClientSideSocket(server_ip):
     '''Create an SSL-wrapped socket for client-side use.
@@ -20,7 +21,7 @@ def createClientSideSocket(server_ip):
     conn = context.wrap_socket(socket.socket(), server_hostname=server_ip)
     return conn
 
-conn = createClientSideSocket("192.168.1.5")
-conn.connect(("192.168.1.5", 5000))
+conn = createClientSideSocket(localSystemVariables.myIP)
+conn.connect((localSystemVariables.myIP, 5000))
 conn.sendall(str.encode("test data"))
 
